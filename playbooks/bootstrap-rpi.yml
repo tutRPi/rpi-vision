@@ -3,7 +3,7 @@
 #   hosts: "{{ RPI_HOSTNAME  | default('raspberrypi.local')}}"
 #   gather_facts: false
 #   vars:
-#     python_version: "{{PYTHON_VERSION | default('3.6.5')}}"
+#     python_version: "{{PYTHON_VERSION | default('3.7.3')}}"
 #     threads: 4
 #   tasks:
 #     - name: "python{{python_version}}  runtime&build dependencies"
@@ -36,7 +36,7 @@
 #       shell: "make altinstall"
 #       args:
 #         chdir: "/tmp/Python-{{python_version}}"
-#         creates: /usr/local/bin/python3.6
+#         creates: /usr/local/bin/python3.7
 - name: "Install dependencies and configure Raspberry Pi for use with rpi-vision examples"
   hosts: "rpi_vision"
   gather_facts: false
@@ -103,7 +103,7 @@
         content: "/usr/local/bin/{{tft_driver_install_script}}" 
         dest: /home/pi/.tft_screen_installed
     - name: Create virtual environment
-      shell: virtualenv -p $(which python3.6) .venv
+      shell: virtualenv -p $(which python3.7) .venv
       args:
         creates: "{{rpi_vision_dir}}/.venv"
         chdir: "{{rpi_vision_dir}}"
