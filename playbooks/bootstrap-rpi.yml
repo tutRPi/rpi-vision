@@ -52,7 +52,7 @@
         name: ['tmux']
     - name: "Clone rpi-vision"
       git:
-        repo: 'https://github.com/leigh-johnson/rpi-vision'
+        repo: 'https://github.com/makermelissa/rpi-vision'
         dest: "{{ rpi_vision_dir }}"
         version: "{{ VERSION | default('release-v1.0.0')}}"
     - name: "Clone rpi-fbcp"
