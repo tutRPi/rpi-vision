@@ -7,7 +7,9 @@ from rpi_vision.agent.capture import PiCameraStream
 from rpi_vision.models.mobilenet_v2 import MobileNetV2Base
 
 logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
 
+capture_manager = PiCameraStream()
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -24,7 +26,6 @@ def parse_args():
 
 def main(args):
     model = MobileNetV2Base(include_top=args.include_top)
-    capture_manager = PiCameraStream()
     capture_manager.start()
 
     while not capture_manager.stopped:

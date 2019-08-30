@@ -30,14 +30,11 @@ trainer_requirements = list(map(
 
 rpi_requirements = [
     'picamera==1.13.0',
-    'Pillow==6.0.0'
+    'Pillow==6.0.0',
+    'numpy==1.17.1'
 ]
 rpi_requirements = list(map(
     lambda x: x + ';platform_machine=="armv7l"', rpi_requirements))
-
-if 'arm' in platform.machine():
-    rpi_requirements.append(
-        'tensorflow@https://github.com/PINTO0309/Tensorflow-bin/raw/master/tensorflow-2.0.0b1-cp37-cp37m-linux_armv7l.whl')
 
 requirements = common_requirements + trainer_requirements + rpi_requirements
 
