@@ -16,13 +16,13 @@ class PiCameraStream(object):
 
     """
 
-    def __init__(self, resolution=(320, 240), framerate=24, vflip=True, hflip=True):
+    def __init__(self, *, resolution=(320, 240), framerate=24, vflip=True, hflip=True, rotation=0, preview=True):
         self.camera = PiCamera()
         self.camera.resolution = resolution
         self.camera.framerate = framerate
         self.camera.vflip = vflip
         self.camera.hflip = hflip
-        self.camera.rotation = 270
+        self.camera.rotation = rotation
 
         self.data_container = PiRGBArray(self.camera, size=resolution)
 
@@ -32,8 +32,9 @@ class PiCameraStream(object):
 
         self.frame = None
         self.stopped = False
-        print('starting camera preview')
-        self.camera.start_preview()
+        if preview:
+            print('starting camera preview')
+            self.camera.start_preview()
 
     def render_overlay(self):
         pass

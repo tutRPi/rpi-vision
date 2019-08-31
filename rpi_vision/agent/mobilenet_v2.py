@@ -1,4 +1,5 @@
 # Python
+import time
 import logging
 import argparse
 
@@ -9,7 +10,7 @@ from rpi_vision.models.mobilenet_v2 import MobileNetV2Base
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
-capture_manager = PiCameraStream()
+capture_manager = PiCameraStream(resolution=(320, 240), rotation=180)
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -31,11 +32,14 @@ def main(args):
     while not capture_manager.stopped:
         if capture_manager.frame is not None:
             frame = capture_manager.read()
+            timestamp = time.monotonic()
             if args.tflite:
                 prediction = model.tflite_predict(frame)
             else:
                 prediction = model.predict(frame)
             logging.info(prediction)
+            delta = time.monotonic() - timestamp            
+            logging.info("%s inference took %d ms, %0.1f FPS" % ("TFLite" if args.tflite else "TF", delta * 1000, 1 / delta))
 
 
 if __name__ == "__main__":
