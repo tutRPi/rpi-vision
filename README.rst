@@ -14,8 +14,6 @@ Computer Vision on Raspberry Pi
         :alt: Documentation Status
 
 
-
-
 Examples and utilities for getting started with computer vision on a Raspberry Pi usingng Tensorflow
 
 

@@ -4,72 +4,20 @@ Deep object detection on a Raspberry Pi using Tensorflow & Keras.
 
 ### Materials
 
-* Raspberry Pi 3 Model B
+* Raspberry Pi 4
 * SD card 8+ GB
-* 3.5" 480 x 320 TFT/SPI screen (XPT2046  controller)
+* 3.5" 480 x 320 PiTFT display (https://www.adafruit.com/product/2441)
 
 ### Install Dependencies (on Raspberry Pi)
 
-* [Install Raspbian](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-* [Configure WiFi (optional, but recommended)](https://www.raspberrypi.org/forums/viewtopic.php?t=191252)
-* @todo link to other basic Pi configuration tasks outside the scope of this guide (add authorized SSH keys, disable password, change hostname)
-* Install system dependencies
-
-```
-sudo apt-get update && \
-sudo apt-get upgrade && \
-sudo apt-get install git python3-dev python3-pip \
-crossbuild-essential-armhf libatlas-base-dev   \
-libhdf5-dev libhdf5-serial-dev \ 
-libopenjp2-7-dev ibtiff5 build-essential cmake pkg-config && \
-sudo pip3 install -U virtualenv
-```
-
-```
-git clone git@github.com:leigh-johnson/rpi-vision.git
-cd rpi-vision
-pip install -r rpi.requirements.txt
-```
-
-### Install TFT Drivers
-
-**WARNING** these instructions **only** apply to the 3.5" TFT (XPT2046) screen. If you're using a difference size or controller, please refer to the instructions in [LCD-show#README](https://github.com/goodtft/LCD-show).
-
-
-```
-git clone git@github.com:goodtft/LCD-show.git
-chmod -R 755 LCD-show
-cd LCD-show
-sudo ./LCD35-show
-```
-
-### Install FBCP
-
-This step is only neccessary if you're using an SPI Display. If you're using an HDMI display, skip this step.
-
-### Updating /boot/config.txt
-
-For better TFT screen performance, add the following to `/boot/config.txt`. Refer to Raspbian's [video options in config.txt](https://www.raspberrypi.org/documentation/configuration/config-txt/video.md) if you're using a different display.
-
-@ todo
-
-### Setup Google Cloud (optional)
-
-@todo
-
+Follow the guide in our Learn System
+https://learn.adafruit.com/running-tensorflow-lite-on-the-raspberry-pi-4
 
 ### Running a trainer (GPU Accelerated)
 
 ```
 pip install -r trainer.requirements.txt
 ```
-
-@todo API docs
-
-
-### Training a custom CNN
-
-@todo API docs
 
 ### Analyzing via Tensorboard
 
