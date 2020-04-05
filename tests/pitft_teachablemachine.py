@@ -23,7 +23,7 @@ logging.getLogger().setLevel(logging.INFO)
 
 # initialize the display
 pygame.init()
-screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((720,480))
 
 capture_manager = PiCameraStream(resolution=(screen.get_width(), screen.get_height()), rotation=180, preview=False)
 
